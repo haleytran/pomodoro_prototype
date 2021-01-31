@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Pomodoro Timer </title>
+  </head>
+
+  <body>
+    <h1> Pomodoro Timer </h1>
+    <p id="time"> 25:00 </p>
+
+    <script> 
+    function timer() {
+      let currTime = new Date().getTime();
+      let timerTime = new Date();
+      timerTime.setMinutes(timerTime.getUTCMinutes() + 25);
+      const timer = timerTime.getTime();
+
+      let val = setInterval( function() {
+        let curr = new Date().getTime();
+        let distance = timer - curr;
+
+	let min = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	let sec = Math.floor((distance % (1000 * 60)) / 1000);
+
+	document.getElementById("time").innerHTML = min + ":" + sec;
+
+	if (distance < 0) {
+	  clearInterval(val);
+  	  document.getElementById("time").innerHTML = "DONE";
+	}
+      }, 1000);
+    }
+    </script>
+
+    <button style="color:red" onclick="toggle()">
+      <div id="start">Start</div>
+    </button>
+
+    <script> 
+    function toggle() {
+      var name = document.getElementById("start");
+      if (name.innerHTML === "Start") {
+	name.innerHTML = "Stop";
+	timer();
+      } else {
+	name.innerHTML = "Start";
+      }
+    }
+    </script>
+
+    <button onClick="reset()">
+    Reset
+    </button>
+
+    <script>
+      function reset() {
+        document.getElementById("time").innerHTML = "25:00"; // change to user input value
+      }
+    </script>
+
+    <h2> Task List </h2>
+    <ul id="list"></ul>
+    <input type="text" id="task" onfocus="this.value=''"> </input>
+    <input type="button" id="add" value="Add Task" onclick="addTask();"> </input>
+   
+    <script>
+    function addTask() {
+      let listItem = document.createElement("Li");
+      let text = document.getElementById("task").value;
+      let textVal = document.createTextNode(text);
+      listItem.appendChild(textVal);
+      document.getElementById("list").appendChild(listItem); 
+    }
+    </script>
+  </body>
+</html>
