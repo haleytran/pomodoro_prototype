@@ -5,28 +5,53 @@
     <link rel="stylesheet" href="style.css">
   </head>
 
+  <header>
+    <!-- Nav Bar -->
+    <nav>
+      <!-- Home Icon -->
+      <div class="setting">
+        <span class="icon">
+          <img src="./assets/setting.png" width="70px" height="70px">
+        </span>
+      </div>
+      <div class="title">
+        Pomodoro Timer
+      </div>
+      <div class="login">
+        <span class="icon">
+          <img src="./assets/login.jpg" width="70px" height ="70px">
+        </span>
+      </div>
+    </nav>
+  </header>
+
   <body>
+    <main>
+      <p id="time"> 25:00 </p>
+
+      <div>
+        <button id="control" style="background-color: rgb(30, 228, 106);" onclick="toggle()">
+          <div id="start">Start</div>
+        </button>
+
+        <button style="background-color: rgb(100, 98, 98);" onclick="reset()"> Reset </button>
+      </div>
+
+      <h2> Task List </h2>
+
+      <div id="list"></div>
+
+      <div>
+        <button style="background-color: rgb(50, 129, 182);" onclick="clearAll()"> Clear All Tasks </button>
+        <input style="background-color: rgb(198, 120, 243);" type="button" id="add" value="Add Task" onclick="addTask()"> </input>
+      </div>
+
+      <div>
+        <p> Task Name <input type="text" id="task" onfocus="this.value=''" > </input> 
+        Task Time <input type="text" id="timer" onfocus="this.value=''" > </input> </p>
+        
+      </div>
+    </main>
     <script src="main.js"></script>
-    <h1> Pomodoro Timer Test 1 </h1>
-    <p id="time"> 25:00 </p>
-
-    <button style="color:red" onclick="toggle()">
-      <div id="start">Start</div>
-    </button>
-
-    <button onclick="reset()"> Reset </button>
-
-    <hr>
-
-    <p> Pomodoro Timer Test 2 </p>
-    <h2> Task List </h2>
-    <button onclick="clearAll()"> Clear All Tasks </button>
-
-    <div id="list"></div>
-    <p> Task Name <input type="text" id="task" onfocus="this.value=''" > </input> 
-    Task Time <input type="text" id="timer" onfocus="this.value=''" > </input> </p>
-    <input type="button" id="add" value="Add Task" onclick="addTask()"> </input>
-  
-    
   </body>
 </html>

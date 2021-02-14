@@ -22,11 +22,14 @@ function timer() {
 
 function toggle() {
     var name = document.getElementById("start");
+    var control = document.getElementById("control");
     if (name.innerHTML === "Start") {
         name.innerHTML = "Stop";
+        control.setAttribute("style", "background-color: red");
         timer();
     } else {
         name.innerHTML = "Start";
+        control.setAttribute("style", "background-color: rgb(30, 228, 106)");
     }
 }
 
